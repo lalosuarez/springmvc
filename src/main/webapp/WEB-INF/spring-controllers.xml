@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+
+  <bean class="org.lalosuarez.app.controller.LineasController">
+    <property name="service" ref="lineaServiceImpl" />
+    
+    <property name="estacionService" ref="estacionServiceImpl" />
+    
+    <property name="linea" ref="lineaDto"/>
+    
+    <property name="methodNameResolver">
+      <bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+        <property name="mappings">
+		  <props>
+		    <prop key="/lineas/add">add</prop>
+		    <prop key="/lineas/list">list</prop>
+		    <prop key="/lineas/edit">edit</prop>
+		    <prop key="/lineas/save">save</prop>
+		    <prop key="/lineas/delete">delete</prop>
+		    <prop key="/lineas/manageEstaciones">manageEstaciones</prop>
+		    <prop key="/lineas/deleteEstacion">deleteEstacion</prop>
+		  </props>
+       </property>
+      </bean>
+    </property>
+  </bean>
+  
+  <bean class="org.lalosuarez.app.controller.EstacionesController">
+    <property name="service" ref="estacionServiceImpl" />
+        
+    <property name="estacion" ref="estacionDto" />
+    
+    <property name="paginator" ref="paginator" />
+    
+    <property name="view" ref="modelAndView" />
+    
+    <property name="methodNameResolver">
+      <bean class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+        <property name="mappings">
+		  <props>
+		    <prop key="/estaciones/add">add</prop>
+		    <prop key="/estaciones/list">list</prop>
+		    <prop key="/estaciones/edit">edit</prop>
+		    <prop key="/estaciones/save">save</prop>
+		    <prop key="/estaciones/delete">delete</prop>
+		    <prop key="/estaciones/search">search</prop>
+		  </props>
+       </property>
+      </bean>
+    </property>
+  </bean>  
+        
+</beans>

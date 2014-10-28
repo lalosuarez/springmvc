@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+.container {
+	width: 100%;
+}
+
+ul {list-style-type: none;}
+
+.colorElement {width: 25px; height: 25px; border-radius: 5px;}
+
+.colorElementStrip {width: 150px; height: 30px; border-radius: 10px;}
