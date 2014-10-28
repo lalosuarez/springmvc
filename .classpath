@@ -28,7 +28,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/paginator-1.0">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.lalosuarez.util">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
