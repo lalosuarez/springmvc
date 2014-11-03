@@ -33,7 +33,7 @@ public class LineasController extends MultiActionController {
 		HttpServletResponse response) throws Exception {
 		
 		setLineas(service.findAll());
-		
+			
 	    return new ModelAndView("lineas-list", "lineas", lineas);	 
 	}
 	

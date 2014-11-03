@@ -6,14 +6,14 @@
   <!-- Custom Servlet test -->
   <servlet>
    	<description></description>
-   	<display-name>CustomServlet</display-name>
-   	<servlet-name>CustomServlet</servlet-name>
-   	<servlet-class>org.lalosuarez.app.servlet.CustomServlet</servlet-class>
+   	<display-name>LineaServlet</display-name>
+   	<servlet-name>LineaServlet</servlet-name>
+   	<servlet-class>org.lalosuarez.app.servlet.LineaServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-   	<servlet-name>CustomServlet</servlet-name>
-   	<url-pattern>/CustomServlet</url-pattern>
+   	<servlet-name>LineaServlet</servlet-name>
+   	<url-pattern>/lineas</url-pattern>
   </servlet-mapping>
   
   <session-config>
@@ -38,6 +38,26 @@
 	<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
   </context-param>
 
+
+  <!-- Servlet for jax-ws -->	
+  <servlet>
+	<servlet-name>soap</servlet-name>
+	<servlet-class>
+		com.sun.xml.ws.transport.http.servlet.WSSpringServlet
+	</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>soap</servlet-name>
+	<url-pattern>/soap/*</url-pattern>
+  </servlet-mapping>
+  <listener>
+	<listener-class>
+		com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+	</listener-class>
+  </listener>
+  
+  <!--Listener for Spring MVC integration -->
   <listener>
 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>  
@@ -82,8 +102,7 @@
     <servlet-name>jersey-serlvet</servlet-name>
 	<url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
-	
-	  
+				 
   <welcome-file-list>
   	<welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

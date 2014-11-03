@@ -8,5 +8,12 @@
 </head>
 <body>
 	<h1>¡CustomServlet executed!</h1>
+	
+	
+	<h3>${action}</h3>
+	
+	<jsp:useBean id="linea" class="org.lalosuarez.app.dto.Linea" scope="request" />
+	<jsp:getProperty property="nombre" name="linea"/>
+	
 </body>
 </html>

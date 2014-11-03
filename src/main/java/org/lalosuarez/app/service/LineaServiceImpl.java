@@ -8,7 +8,7 @@ import org.lalosuarez.app.dto.Linea;
 public class LineaServiceImpl implements LineaService {
 
 	private LineaDao dao;
-	
+		
 	@Override
 	public void save(Linea object) {
 		dao.save(object);

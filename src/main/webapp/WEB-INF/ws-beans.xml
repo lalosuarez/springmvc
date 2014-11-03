@@ -3,22 +3,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+       xmlns:ws="http://jax-ws.dev.java.net/spring/core"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://jax-ws.dev.java.net/spring/core
+            http://jax-ws.java.net/spring/core.xsd
+			http://jax-ws.dev.java.net/spring/servlet
+			http://jax-ws.java.net/spring/servlet.xsd">
 
 	<context:component-scan base-package="org.lalosuarez.app.webservice" />
 
+    <wss:binding url="/soap/redmetro/lineas">
+        <wss:service>
+            <ws:service bean="#lineaSoapWebService"/>
+        </wss:service>
+    </wss:binding>
+    
+<!--     <wss:binding url="/soap/redmetro/estaciones">
+        <wss:service>
+            <ws:service bean="#estacionSoapWebService"/>
+        </wss:service>
+    </wss:binding>  -->   
+    
     <!-- Web Services Beans -->
     <bean id="lineaWebService" class="org.lalosuarez.app.webservice.LineaWebServiceImpl">
     	<property name="service" ref="lineaServiceImpl" />
     	<property name="estacionService" ref="estacionServiceImpl" />
     </bean>
-            
+
+    <bean id="lineaSoapWebService" class="org.lalosuarez.app.webservice.LineaSoapWebServiceImpl">
+    	<property name="service" ref="lineaServiceImpl" />
+    	<property name="estacionService" ref="estacionServiceImpl" />
+    </bean>
+    
+                
     <bean id="estacionWebService" class="org.lalosuarez.app.webservice.EstacionWebServiceImpl">
     	<property name="service" ref="estacionServiceImpl" />
     </bean>
+
+    <bean id="estacionSoapWebService" class="org.lalosuarez.app.webservice.EstacionSoapWebServiceImpl">
+    	<property name="estacionService" ref="estacionServiceImpl" />
+    </bean>    
 
 </beans>    
